@@ -1,0 +1,7 @@
+error: proc-macro derive panicked
+ --> $DIR/enum.rs:4:10
+  |
+4 | #[derive(Fastsearch, Serialize, Deserialize)]
+  |          ^^^^^^^^^
+  |
+  = help: message: Fastsearch can be only be derived for structs: Error("expected `struct`")

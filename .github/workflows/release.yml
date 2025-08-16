@@ -1,0 +1,32 @@
+name: Publish to crates.io
+on:
+  push:
+    tags: ['v*']  # Triggers when pushing tags starting with 'v'
+  workflow_dispatch:  # Allows manual triggering of the workflow
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write     # Required for OIDC token exchange
+    steps:
+    - uses: actions/checkout@v4
+    - uses: rust-lang/crates-io-auth-action@v1
+      id: auth
+
+    - name: Publish fastsearch_derive
+      run: cargo publish 
+      working-directory: fastsearch_derive
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+
+    - name: Publish fastsearch_codegen
+      run: cargo publish 
+      working-directory: fastsearch_codegen
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+
+    - name: Publish fastsearch
+      run: cargo publish
+      working-directory: fastsearch
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}

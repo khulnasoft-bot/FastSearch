@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  fastsearch:
+    image: khulnasoft/fastsearch:latest
+    ports:
+      - "8108:8108"
+    environment:
+      - FASTSEARCH_API_KEY=your-api-key
+      - FASTSEARCH_DATA_DIR=/data
+    volumes:
+      - fastsearch_data:/data
+
+volumes:
+  fastsearch_data:

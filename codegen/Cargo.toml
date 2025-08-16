@@ -1,0 +1,19 @@
+[package]
+name = "fastsearch_codegen"
+version = "0.25.1"
+description = "Types for fastsearch generated with openapi spec"
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde = "^1.0"
+serde_derive = "^1.0"
+serde_json = "^1.0"
+url = "^2.2"
+uuid = { version = "^1.0", features = ["serde", "v4", "js"] }
+
+[dependencies.reqwest]
+version = "^0.12"
+features = ["json", "multipart"]

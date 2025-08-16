@@ -1,0 +1,49 @@
+[package]
+name = "fastsearch"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Client for fastsearch"
+
+[features]
+default = ["derive"]
+tokio_test = []
+
+# Provide derive(Fastsearch) macro.
+derive = ["fastsearch_derive"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+anyhow = "1.0"
+base64 = "0.22"
+hmac = "0.12"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"
+fastsearch_derive = { workspace = true, optional = true }
+fastsearch_codegen = { workspace = true }
+
+[dev-dependencies]
+dotenvy = "0.15"
+trybuild = "1.0.42"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+tokio = { version = "1.5", features = ["macros", "rt", "rt-multi-thread"] }
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+console_error_panic_hook = "0.1.6"
+wasm-bindgen = "0.2"
+wasm-bindgen-test = "0.3.23"
+
+[[test]]
+name = "derive_tests"
+path = "tests/derive/lib.rs"
+required-features = ["derive"]
+
+[[test]]
+name = "api_tests"
+path = "tests/api/lib.rs"

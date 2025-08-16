@@ -1,0 +1,5 @@
+error: Unexpected token facets. Did you mean `facet`?
+ --> $DIR/unknown_attribute.rs:8:17
+  |
+8 |     #[fastsearch(facets)]
+  |                 ^^^^^^

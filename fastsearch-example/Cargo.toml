@@ -1,0 +1,21 @@
+[package]
+name = "fastsearch-example"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "Example usage of the FastSearch client"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fastsearch = { path = "../fastsearch" }
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["raw_value"] }
+anyhow = "1.0"
+dotenv = "0.15"
+futures = "0.3"
+serde_derive = "1.0"
+
+[dev-dependencies]
+mockito = "1.0"

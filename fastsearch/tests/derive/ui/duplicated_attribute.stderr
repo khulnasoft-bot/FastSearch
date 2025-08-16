@@ -1,0 +1,7 @@
+error: #[fastsearch(facet)] repeated more than one time.
+ --> $DIR/duplicated_attribute.rs:7:5
+  |
+7 | /     #[fastsearch(facet)]
+8 | |     #[fastsearch(facet)]
+9 | |     country_code: String,
+  | |________________________^
